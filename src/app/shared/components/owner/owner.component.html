@@ -1,0 +1,87 @@
+<div class="form">
+
+  <form [formGroup]="ownerForm">
+
+    <div class="owner-name">
+      <p>Owner:</p>
+      <span class="name-form">
+        <mat-label>Last Name:</mat-label>
+        <mat-form-field class="form-element">
+
+          <input matInput formControlName="lastName">
+          <mat-error *ngIf="!lastName.valid && lastName.touched">
+            {{ titleAlert }}
+          </mat-error>
+        </mat-form-field>
+      </span>
+
+      <span class="name-form">
+        <mat-label>First Name:</mat-label>
+        <mat-form-field class="form-element">
+
+          <input matInput formControlName="firstName">
+          <mat-error *ngIf="!firstName.valid && firstName.touched">
+            {{ titleAlert }}
+          </mat-error>
+        </mat-form-field>
+      </span>
+
+      <span class="name-form">
+        <mat-label>Middle Name:</mat-label>
+        <mat-form-field class="form-element">
+
+          <input matInput formControlName="middleName">
+          <mat-error *ngIf="!middleName.valid && middleName.touched">
+            {{ titleAlert }}
+          </mat-error>
+        </mat-form-field>
+      </span>
+    </div>
+    <div formArrayName="cars" class="cars">
+      <h4>Cars:</h4>
+
+      <div class="car">
+        <div class="car-labels">
+          <label>Number</label>
+          <label>Brand</label>
+          <label>Model</label>
+          <label>Year</label>
+        </div>
+        <div class="cat-item" *ngFor="let car of carsForms.controls; let i = index" [formGroupName]="i"
+          class="car-sells">
+
+          <mat-form-field class="car-sell">
+            <input matInput type="text" formControlName="number">
+          </mat-form-field>
+
+          <mat-form-field class="car-sell">
+            <input matInput type="text" formControlName="brand">
+          </mat-form-field>
+
+          <mat-form-field class="car-sell">
+            <input matInput type="text" formControlName="model">
+          </mat-form-field>
+
+          <mat-form-field class="car-sell">
+            <input matInput type="number" formControlName="year">
+          </mat-form-field>
+
+          <button mat-fab color="primary" (click)="deleteCar(i)" *ngIf="!onlyOneCar && type !== 'show'">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+      <button mat-raised-button color="primary" (click)="addCar()" *ngIf="type !== 'show'">Add Car</button>
+
+    </div>
+
+  </form>
+
+  <span *ngIf="type !== 'show'">
+    <button type="submit" [disabled]="!ownerForm.valid" (click)="save(ownerForm.value)" mat-raised-button
+      class="save">Save</button>
+  </span>
+
+  <button mat-raised-button color="warn" (click)="goBack()" class="go-back">Go back</button>
+
+</div>

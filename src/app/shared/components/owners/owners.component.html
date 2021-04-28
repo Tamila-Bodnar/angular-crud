@@ -1,0 +1,33 @@
+<div class="table">
+  <h4>Car Owners:</h4>
+  <button mat-raised-button color="warn" (click)="add()"> Add owner </button>
+  <button mat-raised-button color="primary" (click)="show(selectedId)" [disabled]="!chosen"> Show </button>
+  <button mat-raised-button color="primary" (click)="edit(selectedId)" [disabled]="!chosen"> Edit </button>
+  <button mat-raised-button color="primary" (click)="remove(selectedId)" [disabled]="!chosen"> Remove </button>
+
+  <mat-table [dataSource]="owners" class="mat-elevation-z8">
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+      <mat-cell *matCellDef="let data"> {{data.lastName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+      <mat-cell *matCellDef="let data"> {{data.firstName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="middleName">
+      <mat-header-cell *matHeaderCellDef> Middle Name </mat-header-cell>
+      <mat-cell *matCellDef="let data"> {{data.middleName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="numberCars">
+      <mat-header-cell *matHeaderCellDef> Number of Cars </mat-header-cell>
+      <mat-cell *matCellDef="let data"> {{data.cars.length}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
+    <mat-row *matRowDef="let owner; columns: displayColumns" (click)="selectOwner(owner.id)"
+      [class.selected]="selectedId === owner.id"></mat-row>
+  </mat-table>
+</div>

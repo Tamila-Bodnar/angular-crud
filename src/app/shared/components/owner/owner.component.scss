@@ -1,0 +1,63 @@
+.form {
+  width: 80%;
+  margin: 30px auto;
+
+  input {
+    width: calc(100% - 14px);
+    padding-left: 10px;
+  }
+
+  input.ng-touched.ng-invalid {
+    border-color: red;
+    border: 2px solid red;
+  }
+}
+
+.name-form {
+  max-width: 200px;
+  margin: 5px;
+  padding: 20px;
+  text-align: center;
+}
+
+.owner-name {
+  background-color: rgb(190, 190, 190);
+}
+
+.cars {
+  padding: 20px;
+  background-color: rgb(222, 216, 224);
+}
+
+.car-sells .car-sell {
+  width: 200px;
+  height: 50px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.car-labels label {
+  width: 220px;
+  text-align: center;
+}
+
+.car-labels,
+.car-sells {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.save {
+  color: white;
+  background-color: rgb(21, 129, 66);
+}
+
+.save,
+.go-back {
+  margin: 20px;
+  padding: 5px 10px;
+}
